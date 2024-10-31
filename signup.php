@@ -13,16 +13,16 @@ if (isset($_POST['signup'])) {
     if ($u_password != $u_confirm_password) {
         $error = "Passwords do not match!";
     } else {
-        // Check if username already exists
+      
         $query = "SELECT * FROM users WHERE u_username = '$u_username'";
         $result = mysqli_query($dbconnect, $query);
         if (mysqli_num_rows($result) > 0) {
             $error = "Username already exists!";
         } else {
-            // Insert the new user into database without hashing the password
+           
             $query = "INSERT INTO users (u_firstname, u_lastname, u_age, u_username, u_password) VALUES ('$u_firstname', '$u_lastname', '$u_age', '$u_username', '$u_password')";
             if (mysqli_query($dbconnect, $query)) {
-                // Redirect to login page
+             
                 header("Location: login.php");
                 exit();
             } else {
@@ -37,7 +37,7 @@ if (isset($_POST['signup'])) {
 <html lang="en">
 <head>
     <title>Signup</title>
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

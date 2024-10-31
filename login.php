@@ -10,10 +10,10 @@ if (isset($_POST['login'])) {
     $result = mysqli_query($dbconnect, $query);
     if (mysqli_num_rows($result) == 1) {
         $user = mysqli_fetch_assoc($result);
-        // Password is correct
+
         $_SESSION['u_id'] = $user['u_id'];
         $_SESSION['u_firstname'] = $user['u_firstname'];
-        // Redirect to inventory page
+
         header("Location: inventory.php");
         exit();
     } else {
@@ -26,7 +26,7 @@ if (isset($_POST['login'])) {
 <html lang="en">
 <head>
     <title>Login</title>
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

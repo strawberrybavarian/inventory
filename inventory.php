@@ -8,7 +8,7 @@ include("dbconnection.php");
 
 $u_firstname = $_SESSION['u_firstname'];
 
-// Fetch products from database
+
 $query = "SELECT * FROM products";
 $result = mysqli_query($dbconnect, $query);
 ?>
@@ -17,7 +17,7 @@ $result = mysqli_query($dbconnect, $query);
 <html lang="en">
 <head>
     <title>Inventory Management System</title>
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

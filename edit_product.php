@@ -28,25 +28,24 @@ if (isset($_POST['edit_product'])) {
     $p_type = mysqli_real_escape_string($dbconnect, $_POST['p_type']);
     $p_available = isset($_POST['p_available']) ? 1 : 0;
 
-    // Handle image upload
+
     if (isset($_FILES['p_image']) && $_FILES['p_image']['error'] == 0) {
         $target_dir = "uploads/";
         $unique_name = uniqid() . "_" . basename($_FILES["p_image"]["name"]);
         $target_file = $target_dir . $unique_name;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        // Check if the uploads directory exists, if not, create it
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);
         }
 
-        // Check if image file is actual image
+      
         $check = getimagesize($_FILES["p_image"]["tmp_name"]);
         if ($check !== false) {
             if (move_uploaded_file($_FILES["p_image"]["tmp_name"], $target_file)) {
-                // File uploaded successfully
+         
                 $p_image = $unique_name;
-                // Delete old image
+      
                 if ($product['p_image']) {
                     unlink("uploads/" . $product['p_image']);
                 }
@@ -76,7 +75,6 @@ if (isset($_POST['edit_product'])) {
 <html lang="en">
 <head>
     <title>Edit Product</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

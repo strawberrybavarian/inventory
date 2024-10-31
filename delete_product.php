@@ -6,10 +6,10 @@ if (!isset($_SESSION['u_id'])) {
 }
 include("dbconnection.php");
 
+// iamge delete
 if (isset($_GET['p_id'])) {
     $p_id = mysqli_real_escape_string($dbconnect, $_GET['p_id']);
 
-    // Delete the product image if exists
     $query = "SELECT p_image FROM products WHERE p_id = '$p_id'";
     $result = mysqli_query($dbconnect, $query);
     if ($result && mysqli_num_rows($result) == 1) {
