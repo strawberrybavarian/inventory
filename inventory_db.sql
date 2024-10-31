@@ -1,0 +1,29 @@
+CREATE DATABASE IF NOT EXISTS `inventory_db`;
+USE `inventory_db`;
+
+-- Users table
+CREATE TABLE `users` (
+  `u_id` INT NOT NULL AUTO_INCREMENT,
+  `u_firstname` VARCHAR(50) NOT NULL,
+  `u_lastname` VARCHAR(50) NOT NULL,
+  `u_age` INT NOT NULL,
+  `u_username` VARCHAR(50) NOT NULL UNIQUE,
+  `u_password` VARCHAR(255) NOT NULL,
+  `u_created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `u_updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Products table
+CREATE TABLE `products` (
+  `p_id` INT NOT NULL AUTO_INCREMENT,
+  `p_image` VARCHAR(255) DEFAULT NULL,
+  `p_name` VARCHAR(100) NOT NULL,
+  `p_quantity` INT NOT NULL,
+  `p_description` TEXT,
+  `p_type` VARCHAR(50) NOT NULL,
+  `p_available` BOOLEAN NOT NULL DEFAULT 1,
+  `p_created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `p_updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`p_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
