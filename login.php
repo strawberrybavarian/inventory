@@ -28,25 +28,60 @@ if (isset($_POST['login'])) {
     <title>Login</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Change Bootstrap primary color to #154466 */
+        .btn-primary, .text-primary, .bg-primary, .navbar-light .navbar-nav .nav-link.active,
+        .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+            color: #ffffff !important;
+            background-color: #154466 !important;
+            border-color: #154466 !important;
+        }
+
+        /* Optional: change outline button for consistency */
+        .btn-outline-primary {
+            color: #154466 !important;
+            border-color: #154466 !important;
+        }
+        .btn-outline-primary:hover {
+            background-color: #154466 !important;
+            color: #ffffff !important;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1 class="mt-5">Login</h1>
-    <?php if (isset($error)) { ?>
-        <div class="alert alert-danger"><?= $error; ?></div>
-    <?php } ?>
-    <form method="POST" action="login.php">
-        <div class="mb-3">
-            <label for="u_username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="u_username" name="u_username" required>
+    
+<?php include("components/navbar.php"); ?>
+
+<!-- Login Section with Two Columns -->
+<div class="container my-5">
+    <div class="row justify-content-center g-4"> <!-- Added g-4 for gap between columns -->
+        
+        <!-- Image/Additional Content Column -->
+        <div class="col-md-8 col-xl-6">
+            <img src="images/login.png" alt="Login" class="img-fluid">
         </div>
-        <div class="mb-3">
-            <label for="u_password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="u_password" name="u_password" required>
+        <!-- Login Form Column -->
+        <div class="col-md-8 col-xl-6">
+            <h1 class="mt-5">Login</h1>
+            <?php if (isset($error)) { ?>
+                <div class="alert alert-danger"><?= $error; ?></div>
+            <?php } ?>
+            <form method="POST" action="login.php">
+                <div class="mb-3">
+                    <label for="u_username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="u_username" name="u_username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="u_password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="u_password" name="u_password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" name="login">Login</button>
+                <a href="signup.php" class="btn btn-link">Don't have an account? Signup here</a>
+            </form>
         </div>
-        <button type="submit" class="btn btn-primary" name="login">Login</button>
-        <a href="signup.php" class="btn btn-link">Don't have an account? Signup here</a>
-    </form>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
